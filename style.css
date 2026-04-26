@@ -930,6 +930,19 @@
     body.palette-d3dad9 .section-title h2 {
       color: #1a5b49;
     }
+      body.palette-d3dad9 .section-title h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 11px;
+    border-radius: 9px;
+    background: #00ab95;
+    border: 1px solid rgba(25, 240, 167, .24);
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+      
+    }
 
     body.palette-d3dad9 .section-title p {
       color: #237b63;
