@@ -1079,7 +1079,7 @@
   
     /* Requested topbar update */
     body.palette-d3dad9 .topbar {
-      background: #199b72 !important;
+      background: #0e5840 !important;
       min-height: 96px;
       border-bottom-color: rgba(255,255,255,.24);
       box-shadow: 0 14px 34px rgba(25,155,114,.30);
@@ -1178,7 +1178,7 @@
   
     /* New SOLIK ONE logo topbar adjustment */
     body.palette-d3dad9 .topbar {
-      background: #199b72 !important;
+      background: #0e5840 !important;
       min-height: 112px;
       border-bottom-color: rgba(255,255,255,.24);
       box-shadow: 0 14px 36px rgba(25,155,114,.32);
