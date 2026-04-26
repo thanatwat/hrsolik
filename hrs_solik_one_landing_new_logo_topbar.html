@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HRS SOLIK ONE | Executive Console Landing Page</title>
+  <style>
+    :root {
+      --carbon: #44444E;
+      --carbon-2: #383842;
+      --graphite: #44444E;
+      --graphite-2: #555560;
+      --silver: #F7FAFA;
+      --silver-2: #E5EBEA;
+      --silver-3: #D3DAD9;
+      --glass: rgba(255,255,255,.10);
+      --glass-2: rgba(255,255,255,.16);
+      --line: rgba(255,255,255,.20);
+      --green: #22D39B;
+      --green-2: #10A97F;
+      --lime: #B9F26D;
+      --cyan: #6EE7F2;
+      --red: #FF6B7D;
+      --amber: #FFC857;
+      --white: #ffffff;
+      --text: #F8FAFA;
+      --muted: #D7DEDD;
+      --dark-text: #262933;
+      --shadow: 0 26px 70px rgba(68,68,78,.30);
+      --glow: 0 0 24px rgba(34,211,155,.24);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Tahoma, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 0%, rgba(34,211,155,.20), transparent 34rem),
+        radial-gradient(circle at 10% 12%, rgba(110,231,242,.12), transparent 28rem),
+        linear-gradient(135deg, #D3DAD9 0%, #D3DAD9 100%);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(68,68,78,.08) 1px, transparent 1px),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.28), transparent 34rem);
+      background-size: 42px 42px, 42px 42px, auto;
+      mask-image: radial-gradient(circle at 50% 10%, black, transparent 78%);
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 22px; }
+    .section { margin: 0 0 56px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: #2845D6;
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 15px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: #04120e;
+      background:
+        radial-gradient(circle at 30% 25%, #ffffff, transparent 25%),
+        linear-gradient(135deg, var(--green), var(--green-2));
+      box-shadow: var(--glow);
+    }
+
+    .topnav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .topnav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: .2s;
+      border: 1px solid transparent;
+    }
+
+    .topnav a:hover {
+      color: var(--text);
+      border-color: rgba(25,240,167,.25);
+      background: rgba(25,240,167,.08);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      font-weight: 900;
+      letter-spacing: .02em;
+      transition: .25s;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #04120e;
+      background: linear-gradient(135deg, #caffdd, var(--green) 45%, var(--green-2));
+      box-shadow: 0 0 0 1px rgba(25,240,167,.22), 0 18px 40px rgba(25,240,167,.22);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: var(--line);
+    }
+
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+    .panel {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(68,68,78,.98), rgba(68,68,78,.92)),
+        linear-gradient(180deg, rgba(255,255,255,.12), transparent);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background:
+        linear-gradient(110deg, transparent 0%, rgba(255,255,255,.12) 45%, transparent 52%);
+      opacity: .25;
+    }
+
+    .hero {
+      padding: 58px 0 40px;
+    }
+
+    .hero-panel {
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: .96fr 1.04fr;
+      gap: 28px;
+      padding: 44px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 72% 45%, rgba(34,211,155,.20), transparent 26rem),
+        linear-gradient(135deg, rgba(68,68,78,.98), rgba(68,68,78,.92));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border: 1px solid rgba(25,240,167,.32);
+      border-radius: 999px;
+      color: var(--green);
+      background: rgba(25,240,167,.08);
+      box-shadow: inset 0 0 18px rgba(25,240,167,.07);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 20px 0 16px;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: .98;
+      letter-spacing: -2.4px;
+    }
+
+    .hero h1 span {
+      color: transparent;
+      background: linear-gradient(90deg, var(--silver), var(--green), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 0 12px rgba(25,240,167,.18));
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 30px 0;
+    }
+
+    .spec-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 620px;
+    }
+
+    .spec {
+      padding: 15px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+    }
+
+    .spec strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.05;
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(25,240,167,.28);
+    }
+
+    .spec span { color: var(--muted); font-size: 12px; }
+
+    .cockpit {
+      position: relative;
+      min-height: 540px;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+    }
+
+    .cockpit-frame {
+      position: relative;
+      width: min(520px, 100%);
+      aspect-ratio: 1.05 / 1;
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at 50% 55%, rgba(25,240,167,.11), transparent 42%),
+        linear-gradient(145deg, #111d27, #071018 52%, #172532);
+      border: 1px solid rgba(255,255,255,.13);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.05),
+        inset 0 -18px 46px rgba(0,0,0,.55),
+        0 40px 90px rgba(0,0,0,.42);
+      overflow: hidden;
+    }
+
+    .gauge {
+      position: absolute;
+      inset: 38px 34px 70px;
+      border-radius: 50% 50% 18px 18px;
+      background:
+        conic-gradient(from 235deg, transparent 0 9%, var(--green) 9% 46%, var(--amber) 46% 56%, var(--red) 56% 67%, transparent 67% 100%);
+      mask: radial-gradient(circle at 50% 66%, transparent 0 45%, black 45.5% 62%, transparent 62.5%);
+      filter: drop-shadow(0 0 16px rgba(25,240,167,.38));
+    }
+
+    .gauge::after {
+      content: "";
+      position: absolute;
+      inset: 52px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+    }
+
+    .needle {
+      position: absolute;
+      width: 41%;
+      height: 4px;
+      left: 50%;
+      top: 59%;
+      transform-origin: left center;
+      transform: rotate(-18deg);
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), #ffffff);
+      box-shadow: 0 0 18px rgba(25,240,167,.72);
+    }
+
+    .hub {
+      position: absolute;
+      width: 74px;
+      height: 74px;
+      left: 50%;
+      top: 59%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, #f5ffff, #15f0a7 42%, #073d34 70%);
+      color: #06140f;
+      font-weight: 1000;
+      box-shadow: 0 0 36px rgba(25,240,167,.42);
+    }
+
+    .cockpit-center {
+      position: absolute;
+      left: 50%;
+      top: 28%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 86%;
+    }
+
+    .cockpit-center small {
+      letter-spacing: .28em;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 11px;
+    }
+
+    .cockpit-center h3 {
+      margin: 8px 0 4px;
+      font-size: 42px;
+      line-height: 1;
+      color: var(--silver);
+      text-shadow: 0 0 18px rgba(255,255,255,.12);
+    }
+
+    .cockpit-center p {
+      margin: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .dash-cards {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .dash-card {
+      min-height: 82px;
+      border-radius: 18px;
+      padding: 11px;
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.12);
+      text-align: center;
+    }
+
+    .dash-card strong {
+      display: block;
+      color: var(--silver);
+      font-size: 20px;
+    }
+
+    .dash-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin: 8px 0 0;
+      max-width: 700px;
+    }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+
+    .console-card {
+      padding: 24px;
+      min-height: 174px;
+    }
+
+    .console-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.04)),
+        rgba(25,240,167,.08);
+      border: 1px solid rgba(25,240,167,.22);
+      color: var(--green);
+      font-weight: 1000;
+      box-shadow: inset 0 0 18px rgba(25,240,167,.08);
+    }
+
+    .console-card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .console-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .silver-panel {
+      color: var(--dark-text);
+      background:
+        radial-gradient(circle at 92% 0%, rgba(34,211,155,.16), transparent 24rem),
+        linear-gradient(135deg, rgba(247,250,250,.98), rgba(230,236,235,.94));
+      border-color: rgba(255,255,255,.78);
+    }
+
+    .silver-panel .section-title h2,
+    .silver-panel h3 { color: var(--dark-text); }
+    .silver-panel p { color: #526678; }
+
+    .ceo-feature {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .console-display {
+      padding: 20px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #08121b, #172532);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: inset 0 0 36px rgba(0,0,0,.55);
+    }
+
+    .display-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(25,240,167,.10);
+      border: 1px solid rgba(25,240,167,.24);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .display-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .display-box {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.065);
+      border: 1px solid rgba(255,255,255,.11);
+    }
+
+    .display-box strong {
+      display: block;
+      font-size: 24px;
+      color: var(--silver);
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.1);
+      margin-top: 12px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      box-shadow: 0 0 18px rgba(25,240,167,.4);
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      padding: 28px;
+      min-height: 520px;
+      border-radius: 32px;
+      position: relative;
+    }
+
+    .price-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 22px 22px 22px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: .65;
+    }
+
+    .price-card.best {
+      border-color: rgba(25,240,167,.52);
+      box-shadow: var(--shadow), 0 0 36px rgba(25,240,167,.18);
+      transform: translateY(-10px);
+    }
+
+    .best-badge {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: #04120e;
+      font-size: 12px;
+      font-weight: 1000;
+      box-shadow: var(--glow);
+    }
+
+    .pkg {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 1000;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .price-card h3 {
+      margin: 5px 0 10px;
+      font-size: 36px;
+      letter-spacing: -1px;
+    }
+
+    .price {
+      margin: 12px 0 4px;
+      font-size: 40px;
+      font-weight: 1000;
+      line-height: 1;
+      color: var(--silver);
+    }
+
+    .price small {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .per-person {
+      margin: 12px 0 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(25,240,167,.08);
+      border: 1px solid rgba(25,240,167,.22);
+      color: var(--green);
+      font-weight: 1000;
+    }
+
+    .price-list {
+      padding: 0;
+      margin: 18px 0 0;
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .price-list li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+    }
+
+    .tick {
+      color: var(--green);
+      font-weight: 1000;
+      text-shadow: 0 0 8px rgba(25,240,167,.35);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 13px 15px;
+      border-bottom: 1px solid rgba(218,232,241,.13);
+      border-right: 1px solid rgba(218,232,241,.10);
+    }
+
+    th:last-child, td:last-child { border-right: 0; }
+
+    thead th {
+      background: linear-gradient(180deg, #243644, #111d27);
+      color: var(--silver);
+      text-align: center;
+      letter-spacing: .05em;
+    }
+
+    thead th:nth-child(3),
+    thead th:nth-child(4),
+    thead th:nth-child(5) {
+      color: #04120e;
+    }
+
+    thead th:nth-child(3) { background: linear-gradient(135deg, #a8d2ff, #3f8efc); }
+    thead th:nth-child(4) { background: linear-gradient(135deg, #a9ffe1, #19d99b); }
+    thead th:nth-child(5) { background: linear-gradient(135deg, #d2ffd9, #19f0a7); }
+
+    tbody tr.group td {
+      background: rgba(25,240,167,.10);
+      color: var(--green);
+      font-weight: 1000;
+      letter-spacing: .03em;
+    }
+
+    tbody td:nth-child(n+3) {
+      text-align: center;
+      font-weight: 900;
+    }
+
+    tbody tr:not(.group):hover {
+      background: rgba(255,255,255,.04);
+    }
+
+    .yes { color: var(--green); }
+    .dash { color: rgba(159,177,193,.5); }
+    .basic { color: var(--cyan); }
+    .full { color: var(--lime); }
+
+    .faq {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    details {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.055);
+      box-shadow: 0 18px 46px rgba(0,0,0,.22);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 1000;
+      color: var(--silver);
+    }
+
+    details p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .final-cta {
+      padding: 46px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(25,240,167,.26), transparent 30rem),
+        linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
+    }
+
+    .final-cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.08;
+    }
+
+    .final-cta p {
+      margin: 0 auto 26px;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1120px) {
+      .topnav { display: none; }
+      .hero-panel, .ceo-feature { grid-template-columns: 1fr; }
+      .grid-3, .pricing, .faq { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-6 { grid-template-columns: repeat(3, 1fr); }
+      .price-card.best { transform: none; }
+    }
+
+    @media (max-width: 680px) {
+      .container { padding: 0 14px; }
+      .hero-panel, .ceo-feature, .final-cta { padding: 24px; }
+      .spec-strip, .grid-4, .grid-6, .display-grid, .dash-cards { grid-template-columns: 1fr; }
+      .cockpit-frame { aspect-ratio: auto; min-height: 520px; }
+      .dash-cards { position: relative; left: auto; right: auto; bottom: auto; margin: 330px 16px 16px; }
+      .gauge { inset: 38px 20px 180px; }
+      .cockpit-center h3 { font-size: 34px; }
+    }
+  
+    /* Palette override requested: background #D3DAD9, card #44444E */
+    body.palette-d3dad9 .section-title h2 {
+      color: #2B2B34;
+    }
+
+    body.palette-d3dad9 .section-title p {
+      color: #596163;
+    }
+
+    body.palette-d3dad9 .hero .section-title h2,
+    body.palette-d3dad9 .panel .section-title h2 {
+      color: var(--text);
+    }
+
+    body.palette-d3dad9 .panel .section-title p,
+    body.palette-d3dad9 .panel p {
+      color: var(--muted);
+    }
+
+    body.palette-d3dad9 .console-card h3,
+    body.palette-d3dad9 .price-card h3,
+    body.palette-d3dad9 .final-cta h2,
+    body.palette-d3dad9 .ceo-feature:not(.silver-panel) h2 {
+      color: #FFFFFF;
+    }
+
+    body.palette-d3dad9 .price {
+      color: #FFFFFF;
+    }
+
+    body.palette-d3dad9 .topbar {
+      border-bottom-color: rgba(255,255,255,.18);
+      box-shadow: 0 12px 30px rgba(68,68,78,.22);
+    }
+
+    body.palette-d3dad9 .topnav a {
+      color: #E5EBEA;
+    }
+
+    body.palette-d3dad9 .topnav a:hover {
+      color: #FFFFFF;
+      background: rgba(34,211,155,.12);
+    }
+
+    body.palette-d3dad9 .eyebrow {
+      color: #D7FFF0;
+      border-color: rgba(34,211,155,.42);
+      background: rgba(34,211,155,.14);
+    }
+
+    body.palette-d3dad9 .console-icon {
+      color: #D7FFF0;
+      background: rgba(34,211,155,.14);
+      border-color: rgba(34,211,155,.32);
+    }
+
+    body.palette-d3dad9 .per-person {
+      color: #D7FFF0;
+      background: rgba(34,211,155,.14);
+      border-color: rgba(34,211,155,.30);
+    }
+
+    body.palette-d3dad9 .silver-panel p,
+    body.palette-d3dad9 .silver-panel .section-title p {
+      color: #4C5557;
+    }
+
+    body.palette-d3dad9 .silver-panel .eyebrow {
+      color: #0B7E61;
+      background: rgba(34,211,155,.14);
+      border-color: rgba(16,169,127,.24);
+    }
+
+    body.palette-d3dad9 .table-wrap {
+      background: #44444E;
+      border-color: rgba(255,255,255,.26);
+    }
+
+    body.palette-d3dad9 table {
+      color: #F8FAFA;
+    }
+
+    body.palette-d3dad9 thead th {
+      background: linear-gradient(180deg, #555560, #44444E);
+      color: #FFFFFF;
+    }
+
+    body.palette-d3dad9 tbody tr.group td {
+      background: rgba(34,211,155,.16);
+      color: #D7FFF0;
+    }
+
+    body.palette-d3dad9 tbody tr:not(.group):hover {
+      background: rgba(255,255,255,.07);
+    }
+
+    body.palette-d3dad9 th,
+    body.palette-d3dad9 td {
+      border-bottom-color: rgba(255,255,255,.13);
+      border-right-color: rgba(255,255,255,.10);
+    }
+
+  
+    body.palette-d3dad9 .topbar {
+      background: #2845D6 !important;
+      border-bottom-color: rgba(255,255,255,.22);
+      box-shadow: 0 12px 30px rgba(40,69,214,.28);
+    }
+
+    body.palette-d3dad9 .topnav a {
+      color: rgba(255,255,255,.86);
+    }
+
+    body.palette-d3dad9 .topnav a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.24);
+    }
+
+    body.palette-d3dad9 .brand-mark {
+      background:
+        radial-gradient(circle at 30% 25%, #ffffff, transparent 25%),
+        linear-gradient(135deg, #D7FFF0, #22D39B);
+      box-shadow: 0 0 24px rgba(255,255,255,.22);
+    }
+
+  
+    /* Requested topbar update */
+    body.palette-d3dad9 .topbar {
+      background: #199b72 !important;
+      min-height: 96px;
+      border-bottom-color: rgba(255,255,255,.24);
+      box-shadow: 0 14px 34px rgba(25,155,114,.30);
+    }
+
+    body.palette-d3dad9 .topbar-inner {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      min-height: 96px;
+    }
+
+    body.palette-d3dad9 .brand-with-logo {
+      gap: 18px;
+      letter-spacing: .02em;
+      align-items: center;
+    }
+
+    body.palette-d3dad9 .brand-logo-img {
+      /* width: 112px; */
+      height: 100px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.32);
+      box-shadow: 0 10px 28px rgba(0,0,0,.22), 0 0 24px rgba(255,255,255,.16);
+      background: rgba(0,0,0,.16);
+    }
+
+    body.palette-d3dad9 .brand-title-text {
+      display: grid;
+      gap: 2px;
+      line-height: 1.1;
+    }
+
+    body.palette-d3dad9 .brand-title-text strong {
+      font-size: 24px;
+      color: #FFFFFF;
+      font-weight: 1000;
+      letter-spacing: .04em;
+    }
+
+    body.palette-d3dad9 .brand-title-text small {
+      color: rgba(255,255,255,.84);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    body.palette-d3dad9 .topnav a {
+      font-size: 16px;
+      font-weight: 800;
+      padding: 11px 15px;
+      color: rgba(255,255,255,.90);
+    }
+
+    body.palette-d3dad9 .topnav a:hover {
+      color: #FFFFFF;
+      background: rgba(255,255,255,.16);
+      border-color: rgba(255,255,255,.30);
+    }
+
+    @media (max-width: 1120px) {
+      body.palette-d3dad9 .topbar {
+        min-height: 86px;
+      }
+
+      body.palette-d3dad9 .topbar-inner {
+        min-height: 86px;
+      }
+
+      body.palette-d3dad9 .brand-logo-img {
+        width: 92px;
+        height: 56px;
+      }
+
+      body.palette-d3dad9 .brand-title-text strong {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body.palette-d3dad9 .brand-logo-img {
+        width: 78px;
+        height: 50px;
+      }
+
+      body.palette-d3dad9 .brand-title-text strong {
+        font-size: 17px;
+      }
+
+      body.palette-d3dad9 .brand-title-text small {
+        display: none;
+      }
+    }
+
+  
+    /* New SOLIK ONE logo topbar adjustment */
+    body.palette-d3dad9 .topbar {
+      background: #199b72 !important;
+      min-height: 112px;
+      border-bottom-color: rgba(255,255,255,.24);
+      box-shadow: 0 14px 36px rgba(25,155,114,.32);
+    }
+
+    body.palette-d3dad9 .topbar-inner {
+      min-height: 112px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+      gap: 26px;
+    }
+
+    body.palette-d3dad9 .brand-with-logo {
+      gap: 18px;
+      min-width: 430px;
+      align-items: center;
+    }
+
+    body.palette-d3dad9 .brand-logo-img {
+      width: 90px;
+      height: 49px;
+      object-fit: cover;
+      object-position: center 50%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.34);
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.26),
+        0 0 26px rgba(255,255,255,.13);
+      background: rgba(0,0,0,.22);
+    }
+
+    body.palette-d3dad9 .brand-title-text strong {
+      font-size: 25px;
+      color: #FFFFFF;
+      font-weight: 1000;
+      letter-spacing: .045em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+
+    body.palette-d3dad9 .brand-title-text small {
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      line-height: 1.2;
+      max-width: 300px;
+    }
+
+    body.palette-d3dad9 .topnav {
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.palette-d3dad9 .topnav a {
+      font-size: 15px;
+      font-weight: 850;
+      padding: 10px 13px;
+      color: rgba(255,255,255,.92);
+    }
+
+    @media (max-width: 1180px) {
+      body.palette-d3dad9 .topnav {
+        display: none;
+      }
+
+      body.palette-d3dad9 .brand-with-logo {
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body.palette-d3dad9 .topbar {
+        min-height: 90px;
+      }
+
+      body.palette-d3dad9 .topbar-inner {
+        min-height: 90px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+
+      body.palette-d3dad9 .brand-logo-img {
+        width: 75px;
+        height: 45px;
+        border-radius: 14px;
+      }
+
+      body.palette-d3dad9 .brand-title-text strong {
+        font-size: 18px;
+      }
+
+      body.palette-d3dad9 .brand-title-text small {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+<body class="palette-d3dad9">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand brand-with-logo" href="#hero">
+        <img class="brand-logo-img" src="assets/solik-one-logo.png" alt="SOLIK ONE for HRS Logo" />
+        <span class="brand-title-text">
+          <strong>HRS SOLIK ONE</strong>
+          <small>Strategic Business Operation System for HRS</small>
+        </span>
+      </a>
+      <nav class="topnav">
+        <a href="#solution">Solution</a>
+        <a href="#ceo">CEO Dashboard</a>
+        <a href="#modules">Modules</a>
+        <a href="#ai">AI Insight</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#contact">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-panel panel">
+          <div>
+            <span class="eyebrow">Executive Driving Console</span>
+            <h1>ขับเคลื่อน HR ด้วย <span>CEO Cockpit</span> และ AI Insight</h1>
+            <p class="lead">
+              HRS SOLIK ONE คือ HR Intelligence Platform ที่ออกแบบประสบการณ์เหมือนคอนโซลรถยนต์ระดับผู้บริหาร เห็นสถานะองค์กรแบบ Real-time พร้อมระบบ HR, Payroll, Recruitment, Skill Matrix และ AI Insight ในที่เดียว
+            </p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contact">ขอดู Demo</a>
+              <a class="btn btn-ghost" href="#pricing">ดูแพ็กเกจ</a>
+            </div>
+
+            <div class="spec-strip">
+              <div class="spec"><strong>CEO</strong><span>Dashboard ทุกแพ็กเกจ</span></div>
+              <div class="spec"><strong>175฿</strong><span>เริ่มเฉลี่ย / คน / เดือน</span></div>
+              <div class="spec"><strong>AI</strong><span>Executive Insight Report</span></div>
+            </div>
+          </div>
+
+          <div class="cockpit">
+            <div class="cockpit-frame">
+              <div class="gauge"></div>
+              <div class="cockpit-center">
+                <small>HRS SOLIK ONE</small>
+                <h3>CEO DASHBOARD</h3>
+                <p>Strategic HR Intelligence</p>
+              </div>
+              <div class="needle"></div>
+              <div class="hub">AI</div>
+              <div class="dash-cards">
+                <div class="dash-card"><strong>49</strong><span>KPI Health</span></div>
+                <div class="dash-card"><strong>100</strong><span>Approval</span></div>
+                <div class="dash-card"><strong>0</strong><span>OT Risk</span></div>
+                <div class="dash-card"><strong>30</strong><span>Insight</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pain" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>ปัญหา HR แบบเดิม คือผู้บริหารมองไม่เห็น Dashboard ขององค์กร</h2>
+            <p>ข้อมูลกระจัดกระจาย รายงานช้า และไม่มีสัญญาณเตือนก่อนเกิดปัญหา</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="console-card panel"><div class="console-icon">!</div><h3>ข้อมูลกระจัดกระจาย</h3><p>ข้อมูลพนักงาน การลา OT และ Payroll อยู่คนละไฟล์ ทำให้ตรวจสอบยาก</p></div>
+          <div class="console-card panel"><div class="console-icon">⏱</div><h3>ตัดสินใจช้า</h3><p>CEO ต้องรอ HR สรุปรายงานก่อนเห็นสถานะองค์กรจริง</p></div>
+          <div class="console-card panel"><div class="console-icon">⚠</div><h3>ไม่เห็น Risk ล่วงหน้า</h3><p>ปัญหา Attendance, OT, Skill Gap มักถูกพบเมื่อกระทบงานแล้ว</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>เปลี่ยน HR เป็นระบบควบคุมองค์กรแบบ Console</h2>
+            <p>ออกแบบให้ผู้บริหารเห็นภาพรวมเหมือนหน้าปัดรถยนต์ ทั้งความเร็ว ทิศทาง ความเสี่ยง และ Action ที่ควรทำ</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="console-card panel"><div class="console-icon">HR</div><h3>HR Operation</h3><p>Employees, Attendance, Leave, OT, Payroll และ Recruitment อยู่ในระบบเดียว</p></div>
+          <div class="console-card panel"><div class="console-icon">♛</div><h3>CEO Cockpit</h3><p>Dashboard สำหรับผู้บริหาร เห็น KPI Health, Risk, Department Status และ Insight</p></div>
+          <div class="console-card panel"><div class="console-icon">AI</div><h3>AI Insight</h3><p>ช่วยวิเคราะห์ สรุป Executive Report และแนะนำ Steering Action</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ceo" class="section">
+      <div class="container">
+        <div class="ceo-feature panel silver-panel">
+          <div>
+            <span class="eyebrow" style="background:rgba(25,240,167,.14);">Included in Every Package</span>
+            <h2 style="font-size:42px;line-height:1.12;margin:18px 0 12px;">CEO Dashboard มีให้ทุกแพ็กเกจ</h2>
+            <p>
+              ไม่ว่าลูกค้าจะเริ่มจาก START, GROW หรือ SCALE ผู้บริหารสามารถเห็นภาพรวมองค์กรผ่าน CEO Dashboard ได้ตั้งแต่วันแรก จุดนี้ทำให้ HRS SOLIK ONE ต่างจาก HR Software ทั่วไป
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#comparison">ดูความต่างของแพ็กเกจ</a>
+            </div>
+          </div>
+
+          <div class="console-display">
+            <div class="display-head">
+              <span class="pill">● LIVE EXECUTIVE VIEW</span>
+              <span style="color:var(--muted);font-size:12px;">CEO Dashboard</span>
+            </div>
+            <div class="display-grid">
+              <div class="display-box"><span style="color:var(--muted);font-size:12px;">Big Goal Health</span><strong>49%</strong><div class="bar"><span style="width:49%;background:linear-gradient(90deg,var(--red),var(--amber));"></span></div></div>
+              <div class="display-box"><span style="color:var(--muted);font-size:12px;">AI Readiness</span><strong>86%</strong><div class="bar"><span style="width:86%;"></span></div></div>
+              <div class="display-box"><span style="color:var(--muted);font-size:12px;">Approval Flow</span><strong>100%</strong><div class="bar"><span style="width:100%;"></span></div></div>
+              <div class="display-box"><span style="color:var(--muted);font-size:12px;">Executive Insight</span><strong>30x</strong><div class="bar"><span style="width:78%;"></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Module ครบเหมือนชุดควบคุมรถทั้งคัน</h2>
+            <p>แต่ละโมดูลทำหน้าที่เป็น Sensor, Control, Dashboard และ Insight ให้ HR และผู้บริหาร</p>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <div class="console-card panel"><div class="console-icon">▣</div><h3>Dashboard & Strategy</h3><p>Dashboard, CEO Dashboard, CEO Dashboard 2, Strategy Config</p></div>
+          <div class="console-card panel"><div class="console-icon">👥</div><h3>Organization</h3><p>Employees, Departments, Positions, Sites</p></div>
+          <div class="console-card panel"><div class="console-icon">◷</div><h3>Time & Attendance</h3><p>Attendance, Attendance Dashboard, Work Calendars, Holiday Templates</p></div>
+          <div class="console-card panel"><div class="console-icon">✈</div><h3>Leave & OT</h3><p>Leave Requests, Leave Approvals, OT Requests, OT Approvals</p></div>
+          <div class="console-card panel"><div class="console-icon">★</div><h3>Training & Skill</h3><p>Training Skills, Skill Matrix, Training Records</p></div>
+          <div class="console-card panel"><div class="console-icon">฿</div><h3>Recruitment & Payroll</h3><p>Recruitment, Payroll, Reports</p></div>
+          <div class="console-card panel"><div class="console-icon">AI</div><h3>AI Credits</h3><p>เครดิตสำหรับ Generate Executive Insight</p></div>
+          <div class="console-card panel"><div class="console-icon">⚙</div><h3>Admin Setting</h3><p>User Roles, Approval Mapping, Change Password</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai" class="section">
+      <div class="container">
+        <div class="ceo-feature panel">
+          <div>
+            <span class="eyebrow">AI Co-Pilot</span>
+            <h2 style="font-size:42px;line-height:1.12;margin:18px 0 12px;">Executive Insight ไม่ใช่แค่ AI Summary</h2>
+            <p>
+              CEO Dashboard Insight 1 ครั้งใช้ 3 AI Token เพื่อสร้างรายงานผู้บริหาร ช่วยสรุปสถานะองค์กร ชี้ Risk วิเคราะห์แนวโน้ม และแนะนำ Action ที่ควรทำต่อ
+            </p>
+          </div>
+
+          <div class="console-display">
+            <div class="display-head">
+              <span class="pill">AI INSIGHT REPORT</span>
+              <span style="color:var(--muted);font-size:12px;">3 Tokens / Insight</span>
+            </div>
+            <div class="display-grid">
+              <div class="display-box"><strong>01</strong><span style="color:var(--muted);">Executive Summary</span></div>
+              <div class="display-box"><strong>02</strong><span style="color:var(--muted);">Key Risk Highlight</span></div>
+              <div class="display-box"><strong>03</strong><span style="color:var(--muted);">Root Cause Signal</span></div>
+              <div class="display-box"><strong>04</strong><span style="color:var(--muted);">Recommended Action</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>แพ็กเกจราคาแบบ Console Package</h2>
+            <p>ยิ่งอัปเกรด ราคาต่อคนต่อเดือนยิ่งคุ้ม และได้ระบบควบคุมองค์กรครบขึ้น</p>
+          </div>
+        </div>
+
+        <div class="pricing">
+          <div class="price-card panel">
+            <div class="pkg">HR Digital Starter</div>
+            <h3>START</h3>
+            <div class="price">25,000 <small>บาท / เดือน</small></div>
+            <div class="per-person">เฉลี่ย 500 บาท / คน / เดือน</div>
+            <ul class="price-list">
+              <li><span class="tick">✓</span> รองรับพนักงานสูงสุด 50 คน</li>
+              <li><span class="tick">✓</span> CEO Dashboard Included</li>
+              <li><span class="tick">✓</span> AI Token 15 Tokens / เดือน</li>
+              <li><span class="tick">✓</span> เหมาะสำหรับเริ่มต้น HR Digital</li>
+              <li><span class="tick">✓</span> พนักงานเกิน 250 บาท / คน / เดือน</li>
+            </ul>
+          </div>
+
+          <div class="price-card panel">
+            <div class="pkg">HR Workflow Management</div>
+            <h3>GROW</h3>
+            <div class="price">30,000 <small>บาท / เดือน</small></div>
+            <div class="per-person">เฉลี่ย 300 บาท / คน / เดือน</div>
+            <ul class="price-list">
+              <li><span class="tick">✓</span> รองรับพนักงานสูงสุด 100 คน</li>
+              <li><span class="tick">✓</span> CEO Dashboard + CEO Dashboard 2</li>
+              <li><span class="tick">✓</span> AI Token 45 Tokens / เดือน</li>
+              <li><span class="tick">✓</span> เพิ่ม Workflow ลา OT และ Attendance</li>
+              <li><span class="tick">✓</span> พนักงานเกิน 200 บาท / คน / เดือน</li>
+            </ul>
+          </div>
+
+          <div class="price-card panel best">
+            <div class="best-badge">BEST VALUE</div>
+            <div class="pkg">Strategic HR Intelligence</div>
+            <h3>SCALE</h3>
+            <div class="price">35,000 <small>บาท / เดือน</small></div>
+            <div class="per-person">เฉลี่ย 175 บาท / คน / เดือน</div>
+            <ul class="price-list">
+              <li><span class="tick">✓</span> รองรับพนักงานสูงสุด 200 คน</li>
+              <li><span class="tick">✓</span> ครบทั้ง Strategy, Payroll, Recruitment</li>
+              <li><span class="tick">✓</span> AI Token 90 Tokens / เดือน</li>
+              <li><span class="tick">✓</span> Skill Matrix + Reports เต็มรูปแบบ</li>
+              <li><span class="tick">✓</span> พนักงานเกิน 150 บาท / คน / เดือน</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Package & Module Comparison</h2>
+            <p>ตารางเปรียบเทียบ Module ทั้งหมดในแต่ละแพ็กเกจ พร้อมแสดงความคุ้มของ SCALE</p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:220px;">หมวด</th>
+                <th>Module</th>
+                <th>START</th>
+                <th>GROW</th>
+                <th>SCALE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group"><td>แดชบอร์ดและภาพรวม</td><td colspan="4"></td></tr>
+              <tr><td></td><td>Dashboard</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>CEO Dashboard</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>CEO Dashboard 2</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Strategy Config</td><td class="dash">–</td><td class="dash">–</td><td class="yes">มี</td></tr>
+
+              <tr class="group"><td>การจัดการข้อมูลองค์กร</td><td colspan="4"></td></tr>
+              <tr><td></td><td>Employees</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Departments</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Positions</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Sites</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+
+              <tr class="group"><td>ระบบลงเวลาและวันหยุด</td><td colspan="4"></td></tr>
+              <tr><td></td><td>Attendance</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Attendance Dashboard</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Work Calendars</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Holiday Templates</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+
+              <tr class="group"><td>ระบบการลาและล่วงเวลา</td><td colspan="4"></td></tr>
+              <tr><td></td><td>Leave Requests</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Leave Approvals</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>OT Requests</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>OT Approvals</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+
+              <tr class="group"><td>การฝึกอบรมและทักษะ</td><td colspan="4"></td></tr>
+              <tr><td></td><td>Training Skills</td><td class="dash">–</td><td class="dash">–</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Skill Matrix</td><td class="dash">–</td><td class="dash">–</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Training Records</td><td class="dash">–</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+
+              <tr class="group"><td>การสรรหาและเงินเดือน</td><td colspan="4"></td></tr>
+              <tr><td></td><td>Recruitment</td><td class="dash">–</td><td class="dash">–</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Payroll</td><td class="dash">–</td><td class="dash">–</td><td class="yes">มี</td></tr>
+              <tr><td></td><td>Reports</td><td class="basic">พื้นฐาน</td><td class="basic">มาตรฐาน</td><td class="full">เต็มรูปแบบ</td></tr>
+
+              <tr class="group"><td>ระบบสนับสนุนและตั้งค่า</td><td colspan="4"></td></tr>
+              <tr><td></td><td>AI Credits</td><td class="basic">ทดลอง</td><td class="basic">มากขึ้น</td><td class="full">สูงสุด</td></tr>
+              <tr><td></td><td>User Roles</td><td class="basic">พื้นฐาน</td><td class="basic">มาตรฐาน</td><td class="full">เต็มรูปแบบ</td></tr>
+              <tr><td></td><td>Approval Mapping</td><td class="dash">–</td><td class="basic">พื้นฐาน</td><td class="full">เต็มรูปแบบ</td></tr>
+              <tr><td></td><td>Change Password</td><td class="yes">มี</td><td class="yes">มี</td><td class="yes">มี</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="roi" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Business Value ที่ขายได้จริง</h2>
+            <p>ไม่ใช่แค่ระบบ HR แต่คือเครื่องมือช่วยขับเคลื่อนองค์กรให้ถึงเป้าหมาย</p>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <div class="console-card panel"><div class="console-icon">↓</div><h3>ลดงาน Manual</h3><p>ลด Excel และงานเอกสารซ้ำซ้อน</p></div>
+          <div class="console-card panel"><div class="console-icon">⚡</div><h3>อนุมัติเร็วขึ้น</h3><p>Leave / OT / Approval Mapping ลดคอขวด</p></div>
+          <div class="console-card panel"><div class="console-icon">◉</div><h3>เห็น Risk เร็วขึ้น</h3><p>Dashboard และ AI Insight แจ้งสัญญาณก่อนเกิดผลกระทบ</p></div>
+          <div class="console-card panel"><div class="console-icon">↗</div><h3>บริหารเชิงกลยุทธ์</h3><p>เชื่อม HR Data กับ Strategy, Skill และ Performance</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="implementation" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Implementation Roadmap</h2>
+            <p>เริ่มใช้งานเป็นขั้นตอน คล้ายการ Tune ระบบก่อนออกวิ่งจริง</p>
+          </div>
+        </div>
+
+        <div class="grid-6">
+          <div class="console-card panel"><div class="console-icon">1</div><h3>Kickoff</h3><p>กำหนดเป้าหมายและ Scope</p></div>
+          <div class="console-card panel"><div class="console-icon">2</div><h3>Setup</h3><p>ตั้งค่าองค์กรและข้อมูลหลัก</p></div>
+          <div class="console-card panel"><div class="console-icon">3</div><h3>Role</h3><p>กำหนดสิทธิ์และ Approval</p></div>
+          <div class="console-card panel"><div class="console-icon">4</div><h3>Import</h3><p>นำเข้าข้อมูลพนักงาน</p></div>
+          <div class="console-card panel"><div class="console-icon">5</div><h3>Training</h3><p>อบรม HR, Admin, Manager</p></div>
+          <div class="console-card panel"><div class="console-icon">6</div><h3>Go Live</h3><p>เริ่มใช้งานจริงพร้อม Support</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>FAQ</h2>
+            <p>ตอบคำถามสำคัญก่อนลูกค้าขอดู Demo</p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>ทุกแพ็กเกจมี CEO Dashboard ใช่ไหม?</summary>
+            <p>ใช่ ทุกแพ็กเกจมี CEO Dashboard เพื่อให้ผู้บริหารเห็นภาพรวมองค์กรตั้งแต่เริ่มใช้งาน</p>
+          </details>
+          <details>
+            <summary>คิดราคาตาม User หรือพนักงาน?</summary>
+            <p>แนะนำคิดตาม Active Employee หรือจำนวนพนักงานที่ถูกบริหารในระบบ ไม่ใช่เฉพาะคนที่ Login</p>
+          </details>
+          <details>
+            <summary>AI Token คืออะไร?</summary>
+            <p>AI Token คือเครดิตสำหรับสร้าง AI Insight เช่น CEO Dashboard Insight โดย 1 ครั้งใช้ 3 Tokens</p>
+          </details>
+          <details>
+            <summary>ถ้าพนักงานเกินแพ็กคิดอย่างไร?</summary>
+            <p>คิดเพิ่มตามจำนวนพนักงานส่วนเกิน โดย START 250 บาท, GROW 200 บาท และ SCALE 150 บาทต่อคนต่อเดือน</p>
+          </details>
+          <details>
+            <summary>สามารถอัปเกรดแพ็กเกจภายหลังได้ไหม?</summary>
+            <p>สามารถอัปเกรดได้ตามการเติบโตขององค์กร เช่น จาก START ไป GROW หรือ SCALE</p>
+          </details>
+          <details>
+            <summary>ระบบแสดงเมนูตามสิทธิ์ได้ไหม?</summary>
+            <p>ได้ ระบบเป็น Role-based เช่น Employee, HR, Admin, Manager และ CEO จะเห็นเมนูต่างกันตามสิทธิ์</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="final-cta panel">
+          <span class="eyebrow">Ready to Drive</span>
+          <h2>พร้อมเปลี่ยน HR ให้เป็น Executive Console แล้วหรือยัง?</h2>
+          <p>ให้ HRS SOLIK ONE ช่วยยกระดับงาน HR จากงานเอกสาร สู่ระบบควบคุมองค์กรด้วยข้อมูลจริง Dashboard และ AI Insight</p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="mailto:sales@example.com?subject=ขอดู Demo HRS SOLIK ONE">ขอดู Demo</a>
+            <a class="btn btn-ghost" href="#pricing">เลือกแพ็กเกจ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 HRS SOLIK ONE. Automotive Console Theme Landing Page.
+    </div>
+  </main>
+</body>
+</html>
