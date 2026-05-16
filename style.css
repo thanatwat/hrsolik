@@ -1567,3 +1567,50 @@
   object-fit: contain;
   display: block;
 }
+
+/* Image modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 94%;
+  max-height: 86vh;
+  border-radius: 12px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.6);
+}
+
+.modal-caption {
+  margin: 12px auto 0;
+  color: #f1f1f1;
+  text-align: center;
+  font-size: 14px;
+}
+
+.modal-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+@media (max-width: 680px) {
+  .modal-content { max-width: 96%; max-height: 80vh; }
+  .modal-close { right: 14px; top: 12px; font-size: 30px; }
+}
